@@ -22,6 +22,13 @@ class Event
     {
         $isDevMode = ipConfig()->isDevelopmentEnvironment();
 
+        if (!class_exists('Doctrine\ORM\Tools\Setup')) {
+            $success = Helper::tryToInstallDoctrine();
+            if (!$success) {
+                return; //Composer plugin required;
+            }
+        }
+
         $config = Setup::createAnnotationMetadataConfiguration([], $isDevMode);
         // or if you prefer yaml or XML
         //$config = Setup::createXMLMetadataConfiguration(array(__DIR__."/config/xml"), $isDevMode);
@@ -34,6 +41,6 @@ class Event
 
         $em = EntityManager::create($conn, $config);
         Service::setEntityManager($em);
-        require_once('functoins.php');
+        require_once('functions.php');
     }
 }

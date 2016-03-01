@@ -2,6 +2,6 @@
   "title": "Doctrine ORM",
   "version": "1.00",
   "name": "Doctrine",
-  "description": "Enable doctrine ORM on any plugin",
+  "description": "Enable doctrine ORM (depends on Composer plugin)",
   "author": "ImpressPages"
 }

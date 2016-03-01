@@ -24,10 +24,11 @@ class Event
 
         if (!class_exists('Doctrine\ORM\Tools\Setup')) {
             $success = Helper::tryToInstallDoctrine();
-            if (!$success) {
+            if (!$success || !class_exists('Doctrine\ORM\Tools\Setup')) {
                 return; //Composer plugin required;
             }
         }
+        
 
         $config = Setup::createAnnotationMetadataConfiguration([], $isDevMode);
         // or if you prefer yaml or XML
